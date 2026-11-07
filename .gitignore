@@ -7,6 +7,9 @@ dist/
 # Local scratch
 .tmp-build/
 
+# Original map source (converted to src/assets for the site)
+public/map.pdf
+
 # Logs
 *.log
 npm-debug.log*
