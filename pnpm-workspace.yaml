@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - esbuild
+# Copy instead of hard-link, and use a flat node_modules. Harmless on CI and
+# required locally on Windows when the store is on a different volume.
+packageImportMethod: copy
+nodeLinker: hoisted
