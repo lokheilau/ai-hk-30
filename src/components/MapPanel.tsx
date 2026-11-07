@@ -3,6 +3,7 @@ import { nodes } from '../data/nodes'
 import type { MapNode } from '../data/types'
 import { ui } from '../data/ui'
 import { useLang } from '../lib/i18n'
+import HkLocationMap from './HkLocationMap'
 import NodeSheet from './NodeSheet'
 import SectionHead from './SectionHead'
 
@@ -141,6 +142,8 @@ export default function MapPanel() {
             </div>
           </div>
         </div>
+
+        <HkLocationMap onOpen={setOpen} />
       </div>
 
       <NodeSheet node={open} onClose={() => setOpen(null)} />

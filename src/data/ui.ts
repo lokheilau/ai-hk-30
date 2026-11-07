@@ -87,6 +87,23 @@ export const ui = {
     detailLabel: { zh: '節點詳情', en: 'Node detail' },
     nationalLabel: { zh: '國家', en: 'National' },
     hkLabel: { zh: '香港', en: 'Hong Kong' },
+    hkMapTitle: { zh: '香港 AI 中心位置示意', en: 'Where Hong Kong’s AI hubs are located' },
+    hkMapTap: { zh: '點擊地圖上的號碼查看詳情', en: 'Tap a number on the map for details' },
+    hkMapNote: {
+      zh: '示意圖，非精確測繪：輪廓與位置僅表示大致方位。如需精確地理地圖，須使用附審圖號的標準地圖。',
+      en: 'Schematic, not a survey map: the outline and positions show approximate location only. For a precise geographic map, use a standard map carrying an official 審圖號.',
+    },
+    hkMapLoc: {
+      sciencePark: { zh: '科學園', en: 'Science Park' },
+      cyberport: { zh: '數碼港', en: 'Cyberport' },
+      lokMaChau: { zh: '落馬洲河套', en: 'Lok Ma Chau Loop' },
+      northernMetro: { zh: '北部都會區', en: 'Northern Metropolis' },
+    },
+    shenzhen: { zh: '深圳', en: 'Shenzhen' },
+    nt: { zh: '新界', en: 'New Territories' },
+    kowloon: { zh: '九龍', en: 'Kowloon' },
+    hkIsland: { zh: '香港島', en: 'Hong Kong Island' },
+    lantau: { zh: '大嶼山', en: 'Lantau' },
   },
 
   lab: {
