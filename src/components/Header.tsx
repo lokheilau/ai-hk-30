@@ -1,5 +1,12 @@
 import { ui } from '../data/ui'
+import type { Lang } from '../data/types'
 import { useLang } from '../lib/i18n'
+
+const LANGS: { id: Lang; label: { zh: string; en: string } }[] = [
+  { id: 'zh', label: ui.langZh },
+  { id: 'sc', label: ui.langSc },
+  { id: 'en', label: ui.langEn },
+]
 
 const LINKS = [
   { id: 'timeline', label: ui.nav.timeline },
@@ -11,7 +18,7 @@ const LINKS = [
 ]
 
 export default function Header() {
-  const { t, toggle } = useLang()
+  const { t, lang, setLang } = useLang()
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/85 backdrop-blur-md supports-[backdrop-filter]:bg-paper/70">
@@ -48,22 +55,25 @@ export default function Header() {
           </ul>
         </nav>
 
-        <button
-          type="button"
-          onClick={toggle}
+        <div
+          role="group"
           aria-label={t(ui.langLabel)}
-          className="ml-auto flex min-h-11 items-center gap-1.5 rounded-full border border-ink/15 px-3 text-[0.8125rem] font-bold transition-colors hover:border-ink/40 md:ml-2"
+          className="ml-auto flex shrink-0 items-center gap-0.5 rounded-full border border-ink/15 p-0.5 md:ml-2"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4">
-            <path
-              d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 0c2.5 2.4 4 5.6 4 9s-1.5 6.6-4 9m0-18c-2.5 2.4-4 5.6-4 9s1.5 6.6 4 9M3.5 9h17M3.5 15h17"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.6"
-            />
-          </svg>
-          <span>{t(ui.langToggle)}</span>
-        </button>
+          {LANGS.map((l) => (
+            <button
+              key={l.id}
+              type="button"
+              onClick={() => setLang(l.id)}
+              aria-pressed={lang === l.id}
+              className={`min-h-9 rounded-full px-2.5 text-[0.75rem] font-bold transition-colors ${
+                lang === l.id ? 'bg-ink text-paper' : 'text-ink/60 hover:text-ink'
+              }`}
+            >
+              {t(l.label)}
+            </button>
+          ))}
+        </div>
       </div>
     </header>
   )

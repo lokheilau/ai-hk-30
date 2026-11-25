@@ -19,8 +19,10 @@ export const ui = {
     sources: { zh: '來源', en: 'Sources' },
   },
 
-  langToggle: { zh: 'EN', en: '繁中' },
-  langLabel: { zh: '切換至英文', en: 'Switch to Chinese' },
+  langLabel: { zh: '語言', en: 'Language' },
+  langZh: { zh: '繁', en: '繁' },
+  langSc: { zh: '简', en: '简' },
+  langEn: { zh: 'EN', en: 'EN' },
   menuLabel: { zh: '主選單', en: 'Main menu' },
 
   hero: {
@@ -103,6 +105,7 @@ export const ui = {
       lokMaChau: { zh: '落馬洲河套', en: 'Lok Ma Chau Loop' },
       northernMetro: { zh: '北部都會區', en: 'Northern Metropolis' },
     },
+    mediaTitle: { zh: '相關新聞／影片', en: 'Related news & videos' },
   },
 
   lab: {

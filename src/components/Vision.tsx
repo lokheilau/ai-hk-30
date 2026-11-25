@@ -23,7 +23,7 @@ export default function Vision() {
   const [generated, setGenerated] = useState(false)
   const scenario = scenarios.find((s) => s.id === picked) ?? scenarios[0]
 
-  const dateLine = useMemo(() => formatDate(todayISO(), lang), [lang])
+  const dateLine = useMemo(() => formatDate(todayISO(), lang === 'en' ? 'en' : 'zh'), [lang])
 
   const draw = (ctx: CanvasRenderingContext2D) =>
     drawVisionCard(ctx, {
@@ -35,7 +35,7 @@ export default function Vision() {
       url: 'AI·香港30',
       note: t(ui.vision.fictional),
       seed: scenario.seed,
-      lang,
+      lang: lang === 'en' ? 'en' : 'zh',
     })
 
   return (

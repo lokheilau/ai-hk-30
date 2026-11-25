@@ -1,4 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
+import { mediaByMilestone } from '../data/media'
+import { milestoneImages } from '../data/milestoneImages'
 import { milestones } from '../data/milestones'
 import { ui } from '../data/ui'
 import { useLang } from '../lib/i18n'
@@ -83,11 +85,44 @@ export default function Timeline() {
                       {cn ? t(ui.timeline.trackCn) : t(ui.timeline.trackHk)}
                     </span>
                   </div>
+                  {milestoneImages[m.id] && (
+                    <img
+                      src={milestoneImages[m.id]}
+                      alt=""
+                      loading="lazy"
+                      className="mt-3 aspect-[16/10] w-full rounded-xl object-cover"
+                    />
+                  )}
                   <h3 className="mt-3 t-h3 leading-snug">{t(m.title)}</h3>
                   <p className="mt-2 flex-1 t-small text-ink/70">
                     {t(m.body)}
                     <Cite ids={m.sourceIds} />
                   </p>
+                  {mediaByMilestone[m.id] && mediaByMilestone[m.id].length > 0 && (
+                    <div className="mt-2.5 flex flex-wrap gap-1.5">
+                      {mediaByMilestone[m.id].map((media) => (
+                        <a
+                          key={media.url}
+                          href={media.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex max-w-full items-center gap-1 rounded-full bg-verm-soft px-2.5 py-1 t-micro font-bold text-verm hover:bg-verm/15"
+                        >
+                          <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3 shrink-0">
+                            {media.kind === 'video' ? (
+                              <path d="M8 5v14l11-7z" fill="currentColor" />
+                            ) : (
+                              <path
+                                d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Zm3 2v10h10V7H7Z"
+                                fill="currentColor"
+                              />
+                            )}
+                          </svg>
+                          <span className="truncate">{t(media.label)}</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
                   <div className="mt-3 flex items-center gap-2 text-[0.625rem] font-bold text-ink/25">
                     <span className="num">{String(i + 1).padStart(2, '0')}</span>
                     <span className="h-px flex-1 bg-ink/10" aria-hidden="true" />

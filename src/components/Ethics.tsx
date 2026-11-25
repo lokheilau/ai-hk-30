@@ -33,7 +33,7 @@ export default function Ethics() {
 
   const canGenerate = picked.length >= NEEDED
   const chosen = commitments.filter((c) => picked.includes(c.id))
-  const dateLine = useMemo(() => formatDate(todayISO(), lang), [lang])
+  const dateLine = useMemo(() => formatDate(todayISO(), lang === 'en' ? 'en' : 'zh'), [lang])
 
   const draw = (ctx: CanvasRenderingContext2D) =>
     drawCommitmentCard(ctx, {
@@ -45,7 +45,7 @@ export default function Ethics() {
       tag: t(ui.ethics.cardTag),
       note: t(ui.ethics.note),
       seed: 1997 + picked.length * 37,
-      lang,
+      lang: lang === 'en' ? 'en' : 'zh',
     })
 
   return (

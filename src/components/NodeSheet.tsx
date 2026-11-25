@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { mediaByNode } from '../data/media'
 import type { MapNode } from '../data/types'
 import { ui } from '../data/ui'
 import { useLang } from '../lib/i18n'
@@ -175,6 +176,47 @@ export default function NodeSheet({ node, onClose }: { node: MapNode | null; onC
 
         <div className="overflow-y-auto p-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
           {body[tab]}
+
+          {mediaByNode[node.id] && mediaByNode[node.id].length > 0 && (
+            <div className="mt-4 border-t border-paper/10 pt-3">
+              <p className="t-micro font-extrabold tracking-wide text-paper/50">{t(ui.map.mediaTitle)}</p>
+              <ul className="mt-2 space-y-2">
+                {mediaByNode[node.id].map((m) => (
+                  <li key={m.url}>
+                    <a
+                      href={m.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2.5 rounded-xl border border-paper/15 px-3 py-2.5 t-small text-paper/85 transition-colors hover:border-paper/40 hover:text-paper"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 shrink-0 text-jade-bright">
+                        {m.kind === 'video' ? (
+                          <path d="M8 5v14l11-7z" fill="currentColor" />
+                        ) : (
+                          <path
+                            d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Zm3 2v10h10V7H7Z"
+                            fill="currentColor"
+                          />
+                        )}
+                      </svg>
+                      <span className="min-w-0 flex-1">{t(m.label)}</span>
+                      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3.5 shrink-0 text-paper/40">
+                        <path
+                          d="M14 4h6v6m0-6L10 14M9 5H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-4"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <span className="sr-only">({t(ui.a11y.opensNew)})</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>

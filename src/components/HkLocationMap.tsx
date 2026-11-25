@@ -14,7 +14,7 @@ const OFFICIAL_MAP = 'https://www.map.gov.hk'
  */
 const POINTS: { n: number; x: number; y: number; nodeIds: string[]; loc: 'sciencePark' | 'cyberport' | 'lokMaChau' }[] = [
   { n: 1, x: 56.6, y: 43.2, nodeIds: ['node-hkgai', 'node-innohk'], loc: 'sciencePark' },
-  { n: 2, x: 49.4, y: 64.8, nodeIds: ['node-aisc'], loc: 'cyberport' },
+  { n: 2, x: 49.0, y: 66.2, nodeIds: ['node-aisc'], loc: 'cyberport' },
   { n: 3, x: 43.7, y: 29.9, nodeIds: ['node-hsitp'], loc: 'lokMaChau' },
 ]
 

@@ -1,4 +1,4 @@
-export type Lang = 'zh' | 'en'
+export type Lang = 'zh' | 'sc' | 'en'
 
 /** Every user-visible string exists in both languages. No fallbacks, no gaps. */
 export type Bi = { zh: string; en: string }
